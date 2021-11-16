@@ -11,8 +11,6 @@ namespace Checkout
     {
         static void Main(string[] args)
         {
-            var totalPrice = 0.00M;
-
             // Bean Can
             var beanCan = new ConstantPriceProduct();
             beanCan.Price = 0.65M;
@@ -26,20 +24,25 @@ namespace Checkout
             var sodaCan = new SpecialFreeProduct();
             sodaCan.Price = 2.05M;
 
+            // Create Cart Item List
             var cartItems = new List<CartItem>();
 
+            // Add Bean Cans
             var cartItem = new CartItem(beanCan);
             cartItem.Quantity = 2;
             cartItems.Add(cartItem);
 
+            // Add Avacados
             cartItem = new CartItem(avacado);
             cartItem.Quantity = 5;
             cartItems.Add(cartItem);
 
+            // Add Soda Cans
             cartItem = new CartItem(sodaCan);
             cartItem.Quantity = 4;
             cartItems.Add(cartItem);
 
+            var totalPrice = 0.00M;
             foreach (var ci in cartItems)
             {
                 totalPrice += ci.CalculateItemPrice();
